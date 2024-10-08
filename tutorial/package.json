@@ -1,0 +1,36 @@
+{
+  "name": "tutorial",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.22.1",
+    "@sap-cloud-sdk/http-client": "^3.22.1",
+    "@sap-cloud-sdk/resilience": "^3.22.1",
+    "@sap/cds": "^8",
+    "cdse": "^1.1.12",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "GWSIMPLE": {
+        "kind": "odata-v2",
+        "model": "srv/external/GWSIMPLE",
+        "credentials": {
+          "destination": "MainDev",
+          "path": "/sap/opu/odata/sap/ZAJ_LAUNCHPAD_DAFF_SRV",
+          "requestTimeout": 30000
+        }
+      }
+    }
+  }
+}

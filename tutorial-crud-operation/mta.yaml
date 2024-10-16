@@ -1,0 +1,94 @@
+_schema-version: 3.3.0
+ID: tutorial
+description: A simple CAP project.
+version: 1.0.1
+provider: ah
+modules:
+  - name: tutorial-srv
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: tutorial
+      - name: tutorial_c
+      - name: srv-api
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 512M
+      readiness-health-check-http-endpoint: /health
+      readiness-health-check-type: http
+  - name: tutorial-app-content
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: tutorial-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - interface.zip
+          name: interface
+          target-path: resources/
+  - name: interface
+    type: html5
+    path: app/interface
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms:
+        []
+resources:
+  - name: tutorial
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: false
+        init_data:
+          instance:
+            destinations:
+              - Authentication: NoAuthentication
+                Name: ui5
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://ui5.sap.com
+              - Authentication: NoAuthentication
+                HTML5.DynamicDestination: true
+                HTML5.ForwardAuthToken: true
+                Name: tutorial-srv-api
+                ProxyType: Internet
+                Type: HTTP
+                URL: ~{srv-api/srv-url}
+            existing_destinations_policy: update
+      service: destination
+      service-plan: lite
+    requires:
+      - name: srv-api
+  - name: tutorial_c
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+  - name: tutorial-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: tutorial-html5-srv
+      service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install --production
+        - npx -p @sap/cds-dk cds build --production
+        - cp app -r  gen/srv/app
+        - mkdir -p resources

@@ -1,0 +1,50 @@
+{
+  "name": "tutorial",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^3.22.1",
+    "@sap-cloud-sdk/http-client": "^3.22.1",
+    "@sap-cloud-sdk/resilience": "^3.22.1",
+    "@sap/approuter": "^16.9.0",
+    "@sap/cds": "^8",
+    "@sap/cds-compiler": "^5.3.2",
+    "@sap/xssec": "^4",
+    "cdse": "^1.1.12",
+    "express": "^4",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8",
+    "@sap/cds-runtime": "^3.3.0",
+    "@sap/ux-specification": "UI5-1.129",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-interface": "cds watch --open interface/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy tutorial --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-second": "cds watch --open second/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "GWSIMPLE": {
+        "kind": "odata-v2",
+        "model": "srv/external/GWSIMPLE",
+        "csrf": true,
+        "credentials": {
+          "destination": "MainDev",
+          "path": "/sap/opu/odata/sap/ZAJ_LAUNCHPAD_DAFF_SRV",
+          "requestTimeout": 30000
+        }
+      }
+    }
+  }
+}

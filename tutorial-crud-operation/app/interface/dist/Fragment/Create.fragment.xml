@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog title="Create User Data">
+        <content>
+            <form:SimpleForm>
+                <form:content>
+                    <Label text="UserName" />
+                    <Input value="{CreateData>/Username}" />
+                    <Label text="UserEmail" />
+                    <Input value="{CreateData>/Useremail}" />
+                    <Label text="UserPassword" />
+                    <Input value="{CreateData>/Userpass}" />
+                    <Label text="UserDesign" />
+                    <Input value="{CreateData>/Userdesign}" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <endButton>
+            <Button text="Submit" type="Emphasized" press="CreateUserDataPress"/>
+        </endButton>
+        <beginButton>
+            <Button text="Cancel"  press="CloseDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

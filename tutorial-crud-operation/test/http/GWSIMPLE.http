@@ -1,0 +1,98 @@
+@server = http://localhost:4004
+@auth = Authorization: Basic alice:
+
+
+### ZLAUNCHAPPINFOSet
+# @name ZLAUNCHAPPINFOSet_GET
+GET {{server}}/odata/v4/gwsimple/ZLAUNCHAPPINFOSet
+{{auth}}
+
+
+### ZLAUNCHAPPINFOSet
+# @name ZLAUNCHAPPINFOSet_POST
+POST {{server}}/odata/v4/gwsimple/ZLAUNCHAPPINFOSet
+Content-Type: application/json
+{{auth}}
+
+{
+  "Lappid": "26822",
+  "Lappname": "Lappname-29826821",
+  "Lappdesc": "Lappdesc-29826821",
+  "Lapplink": "Lapplink-29826821",
+  "Lappimg": "Lappimg-29826821",
+  "Lapppin": false,
+  "Luserid": "d-29826821",
+  "Lsmantic": "Lsmantic-29826821",
+  "Laction": "Laction-29826821",
+  "Lparam": "Lparam-29826821"
+}
+
+
+### ZLAUNCHAPPINFOSet
+# @name ZLAUNCHAPPINFOSet_PATCH
+PATCH {{server}}/odata/v4/gwsimple/ZLAUNCHAPPINFOSet/26821
+Content-Type: application/json
+{{auth}}
+
+{
+  "Lappid": "26821",
+  "Lappname": "Lappname-29826821",
+  "Lappdesc": "Lappdesc-29826821",
+  "Lapplink": "Lapplink-29826821",
+  "Lappimg": "Lappimg-29826821",
+  "Lapppin": false,
+  "Luserid": "d-29826821",
+  "Lsmantic": "Lsmantic-29826821",
+  "Laction": "Laction-29826821",
+  "Lparam": "Lparam-29826821"
+}
+
+
+### ZLAUNCHAPPINFOSet
+# @name ZLAUNCHAPPINFOSet_DELETE
+DELETE {{server}}/odata/v4/gwsimple/ZLAUNCHAPPINFOSet/26821
+Content-Type: application/json
+{{auth}}
+
+
+### ZLAUNCHUSERINFOSet
+# @name ZLAUNCHUSERINFOSet_GET
+GET {{server}}/odata/v4/gwsimple/ZLAUNCHUSERINFOSet
+{{auth}}
+
+
+### ZLAUNCHUSERINFOSet
+# @name ZLAUNCHUSERINFOSet_POST
+POST {{server}}/odata/v4/gwsimple/ZLAUNCHUSERINFOSet
+Content-Type: application/json
+{{auth}}
+
+{
+  "Userid": "et-8525982",
+  "Username": "Username-8525982",
+  "Useremail": "Useremail-8525982",
+  "Userpass": "Userpass-8525982",
+  "Userdesign": 84
+}
+
+
+### ZLAUNCHUSERINFOSet
+# @name ZLAUNCHUSERINFOSet_PATCH
+PATCH {{server}}/odata/v4/gwsimple/ZLAUNCHUSERINFOSet/et-8525982
+Content-Type: application/json
+{{auth}}
+
+{
+  "Userid": "et-8525982",
+  "Username": "Username-8525982",
+  "Useremail": "Useremail-8525982",
+  "Userpass": "Userpass-8525982",
+  "Userdesign": 84
+}
+
+
+### ZLAUNCHUSERINFOSet
+# @name ZLAUNCHUSERINFOSet_DELETE
+DELETE {{server}}/odata/v4/gwsimple/ZLAUNCHUSERINFOSet/et-8525982
+Content-Type: application/json
+{{auth}}

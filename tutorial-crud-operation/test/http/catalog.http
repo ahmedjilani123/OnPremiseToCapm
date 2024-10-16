@@ -1,0 +1,45 @@
+@server = http://localhost:34765
+@auth = Authorization: Basic alice:
+
+
+### UserData
+# @name UserData_GET
+GET {{server}}/odata/v4/catalog/UserData
+{{auth}}
+###
+
+get http://maindev.dest/odata/v4/$metadata
+
+### UserData
+# @name UserData_POST
+POST {{server}}/odata/v4/catalog/UserData
+Content-Type: application/json
+
+{
+      "Username": "capm",
+      "Useremail": "capm@GMAIL.COM",
+      "Userpass": "capms@123",
+      "Userdesign": 2
+    }
+
+
+### UserData
+# @name UserData_PATCH
+PUT {{server}}/odata/v4/catalog/UserData('9992256499')
+Content-Type: application/json
+{{auth}}
+
+{
+  "Userid": "9992256499",
+  "Username": "ssdfsdf",
+  "Useremail": "newUpdateEmail",
+  "Userpass": "UpdatePass",
+  "Userdesign": 7
+}
+
+
+### UserData
+# @name UserData_DELETE
+DELETE {{server}}/odata/v4/catalog/UserData('9992256499')
+Content-Type: application/json
+{{auth}}

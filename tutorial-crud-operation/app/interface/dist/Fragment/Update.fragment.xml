@@ -1,0 +1,28 @@
+<core:FragmentDefinition
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog title="User Data Update">
+        <content>
+            <form:SimpleForm>
+                <form:content>
+                    <Label text="User Name" />
+                    <Input value="{Capm>Username}" />
+                    <Label text="User Email" />
+                    <Input value="{Capm>Useremail}" />
+                    <Label text="User Password" />
+                    <Input value="{Capm>Userpass}" />
+                    <Label text="User Design" />
+                    <Input value="{Capm>Userdesign}" />
+                </form:content>
+            </form:SimpleForm>
+        </content>
+        <endButton>
+            <Button text="Submit" press="UpdateUserSingleData" />
+        </endButton>
+        <beginButton>
+            <Button text="Cancel"  press="CloseDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

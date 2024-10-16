@@ -1,0 +1,57 @@
+<mvc:View controllerName="interface.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+        	<Table id="idProductsTable" inset="false" items="{Capm>/UserData}">
+			<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Products" level="H2"/>
+					<ToolbarSpacer />
+					
+					<Button  text="Create" press="CreateDialogOpen"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Product" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Email" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Password" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Design No" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Action" />
+			</Column>
+		
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{Capm>Username}"></Text>
+					<Text text="{Capm>Useremail}"/>
+					<Text text="{Capm>Userpass}"/>
+					<Text text="{Capm>Userdesign}"/>
+					<HBox >
+					<Button icon="sap-icon://edit" press="EditPress"></Button>
+					<Button icon="sap-icon://delete" press="DeletePress"></Button>
+					</HBox>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+        </content>
+    </Page>
+</mvc:View>
